@@ -115,6 +115,7 @@ int main() {
     complete_zero_registre(hexa2);
     printf("Decimale: %d\n Hexadecimale: %s\n\n", v_deci_r, hexa2);
 
+    printf("Test");
 
     return 0;
 }
