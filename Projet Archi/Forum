@@ -1,4 +1,10 @@
 Pour le 10/12 : 
 
 Aybek:
-- fonction décimal en héxa
+- tableaux de référence pour codes en assembleur et code numérique
+- fonction décimal -> héxa
+- fonction indice qui renvoie l'indice d'un élément du tableau
+
+Baptiste :
+ - lecture fichier assembleur et stockage dans un tableau à deux dimensions
+ 
