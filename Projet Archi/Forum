@@ -1,8 +1,9 @@
 Pour le 10/12 : 
 
 Aybek:
-- tableaux de référence pour codes en assembleur et code numérique
-- fonction décimal -> héxa
+- tableaux de référence pour codes en assembleur et code numérique (pour le code num, on le fera après la réalisation des fonctions suivantes
+comme on ne connaît pas le code num dans le fichier.
+- fonction instruction -> décimal + fonction décimal -> héxa
 - fonction indice qui renvoie l'indice d'un élément du tableau
  - réfléchir à la gestion des étiquettes
 
