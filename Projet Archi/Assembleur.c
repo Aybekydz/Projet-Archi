@@ -18,13 +18,12 @@ int instruction_to_decimal(char *instruction){
     if (strcmp(code_instruction[lg-1], instruction) == 0){
         return 99;
     }
-    for (int i = 0; i < 15; i++) {
+    for (int i = 0; i < 15; i++){
         if ((strcmp(code_instruction[i], instruction)) == 0) {
             return i;
         }
     }
     return -1; // code erreur, aucune instruction correcte n'a ete trouvee
-
 }
 
 // Convertisseur d'un nombre decimal en hexadecimal
@@ -100,8 +99,13 @@ void complete_zero_registre(char *registre){
     strcpy(registre, temp);
 }
 
-
-
+//Procédure de split la chaîne de caractère en 2 ou 3 tableaux : [etiquette] [instructions] [registres]
+int isEtiquette(char *etiquette){
+    if (etiquette[strlen(etiquette) - 1] == ':'){
+        return 1;
+    }
+    return 0;
+}
 
 int main() {
     char instruction[] = "push"; 
