@@ -108,7 +108,7 @@ void complete_zero_registre(char *registre){
     strcpy(registre, temp);
 }
 
-//Procédure de split la chaîne de caractère en 2 ou 3 tableaux : [etiquette] [instructions] [registres]
+//Fonction qui teste si la chaîne de caractère est une étiquette ou non
 int isEtiquette(char *etiquette){
     if (etiquette[strlen(etiquette) - 1] == ':'){
         return 1;
