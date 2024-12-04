@@ -28,7 +28,7 @@ int instruction_to_decimal(char *instruction){
 }
 
 // Convertisseur d'un nombre decimal en hexadecimal
-char* decimal_to_hexa(int nb){
+char *decimal_to_hexa(int nb){
     static char hexa[100];
     int indice = 0;
     int reste;
