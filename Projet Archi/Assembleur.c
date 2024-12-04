@@ -5,8 +5,29 @@
 
 // Lecture du fichier d'entree
 
-
-
+int InCharTab (char elt[], char* T[], int n){
+    /*Fonction qui teste si une chaîne de caractère est dans un tableau de chaînes de caractère
+    IN : char elt : la chaine de caractère à tester
+         char* T[] : tableau de chaines de caractères
+         int n : longueur du tableau T
+    OUT : 1 si l'élément est dans le tableau
+          0 sinon
+    */
+    int lelt = strlen(elt), cpt = 0;
+    for(int i=0; i<n; i++){
+        cpt = 0;
+        if (strlen(T[i])!=lelt)
+            continue;
+        for(int j=0; j<lelt; j++){
+            if (elt[j]!=T[j])
+                cpt += 1;
+        }
+        if (cpt!=lelt)
+            continue;
+        return 1;
+    }
+    return 0;
+}
 
 
 // Fonction qui prend une instruction en argument puis va le traduire en decimal
