@@ -95,18 +95,6 @@ void complete_zero_instruct(char *instruction){
 /*
 zsh: trace trap  "/Users/aybekydz/Documents/Info S3/Projet Archi/Projet_Archi/"Assembleur
 Erreur que j'ai eu avec ce code quand j'ai oublié le i++ ... :
-
-void complete_zero_registre(char *registre){
-    int i = 0;
-    int diff = 4 - strlen(registre);
-    char temp[20] = "";
-    while (i < diff) {
-        strcat(temp,"0");
-    }
-    strcat(temp, registre);
-    strcpy(registre, temp);
-}
-
 */
 void complete_zero_registre(char *registre){
     int i = 0;
