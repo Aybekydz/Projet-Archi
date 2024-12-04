@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
+#define DEBUG
 
 const char *code_instruction[] = {"pop", "ipop", "push", "ipush", "push#", "jmp", "jnz", "call", "ret", "read", "write", "op", "rnd", "dup", "halt"};
 
