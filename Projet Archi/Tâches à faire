@@ -11,4 +11,5 @@ V fonction indice qui renvoie l'indice d'un élément du tableau
 
 Baptiste :
  - lecture fichier assembleur et stockage dans un tableau à deux dimensions
+ - gestion des erreurs dans le code assembleur
  - réfléchir à la gestion des étiquettes
