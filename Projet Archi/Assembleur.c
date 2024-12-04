@@ -3,7 +3,9 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-// Lecture du fichier d'entree
+const char *code_instruction[] = {"pop", "ipop", "push", "ipush", "push#", "jmp", "jnz", "call", "ret", "read", "write", "op", "rnd", "dup", "halt"};
+
+//---------------------------------------------------Fonctions annexes-------------------------------------------------------
 
 int InCharTab (char elt[], char* T[], int n){
     /*Fonction qui teste si une chaîne de caractère est dans un tableau de chaînes de caractère
@@ -29,10 +31,7 @@ int InCharTab (char elt[], char* T[], int n){
     return 0;
 }
 
-
 // Fonction qui prend une instruction en argument puis va le traduire en decimal
-const char *code_instruction[] = {"pop", "ipop", "push", "ipush", "push#", "jmp", "jnz", "call", "ret", "read", "write", "op", "rnd", "dup", "halt"};
-
 int instruction_to_decimal(char *instruction){
     int lg = sizeof(code_instruction) / sizeof(code_instruction[1]);
     //si la valeur de l'instruction passée en argument est exactement la meme que celle contenue dans le code_instruction alors on retourne l'indice du code en question
@@ -116,6 +115,7 @@ int isEtiquette(char *etiquette){
     return 0;
 }
 
+//-------------------------------------------Fonctions principales-----------------------------------------------------------
 int main() {
     char instruction[] = "push"; 
     int registre = 1000;
