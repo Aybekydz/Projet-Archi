@@ -33,7 +33,7 @@ int InCharTab (char elt[], char* T[], int n){
 }
 
 // Fonction qui prend une instruction en argument puis va le traduire en decimal
-int instruction_to_decimal(char *instruction){
+int instruction_to_decimal(const char *instruction){
     int lg = sizeof(code_instruction) / sizeof(code_instruction[1]);
     //si la valeur de l'instruction passée en argument est exactement la meme que celle contenue dans le code_instruction alors on retourne l'indice du code en question
     if (strcmp(code_instruction[lg-1], instruction) == 0){
@@ -108,6 +108,25 @@ void complete_zero_registre(char *registre){
     strcpy(registre, temp);
 }
 
+//Fonction qui fait tout d'un coup
+char *instruction_to_hexa(const char *instruction) {
+    int v_deci = instruction_to_decimal(instruction);
+    if (v_deci == -1) {
+        return NULL;
+    }
+    char *hexa = decimal_to_hexa(v_deci);
+    complete_zero_instruct(hexa);
+    return hexa;
+}
+
+// Convert register value to hexadecimal
+char *registre_to_hexa(int registre) {
+    char *hexa = decimal_to_hexa(registre);
+    complete_zero_registre(hexa);
+    return hexa;
+}
+
+
 //Fonction qui teste si la chaîne de caractère est une étiquette ou non
 int isEtiquette(char *etiquette){
     if (etiquette[strlen(etiquette) - 1] == ':'){
@@ -118,19 +137,8 @@ int isEtiquette(char *etiquette){
 
 //-------------------------------------------Fonctions principales-----------------------------------------------------------
 int main() {
-    char instruction[] = "push"; 
-    int registre = 1000;
-    int v_deci_i = instruction_to_decimal(instruction); 
-    int v_deci_r = registre;
-
-    char *hexa = decimal_to_hexa(v_deci_i); 
-    char *hexa2 = decimal_to_hexa(v_deci_r); 
-    complete_zero_instruct(hexa);
-    complete_zero_registre(hexa2);
-    printf("Decimale: %d\n Hexadecimale: %s\n\n", v_deci_r, hexa2);
-
-    printf("Test");
-
+    char instruction[] = "op"; 
+    char *hex_instruction = instruction_to_hexa(instruction);
+    printf("Instruction: %s\n Hexadecimal: %s\n", instruction, hex_instruction);
     return 0;
 }
-
