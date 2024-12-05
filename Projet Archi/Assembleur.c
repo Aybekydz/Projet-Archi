@@ -22,7 +22,7 @@ int InCharTab (char elt[], char* T[], int n){
         if (strlen(T[i])!=lelt)
             continue;
         for(int j=0; j<lelt; j++){
-            if (elt[j]!=T[j])
+            if (elt[j]!=T[i][j])
                 cpt += 1;
         }
         if (cpt!=lelt)
