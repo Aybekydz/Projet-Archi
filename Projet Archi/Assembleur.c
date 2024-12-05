@@ -4,15 +4,15 @@
 #include <ctype.h>
 
 // Lecture du fichier d'entree
-
+/*
 int InCharTab (char elt[], char* T[], int n){
-    /*Fonction qui teste si une chaîne de caractère est dans un tableau de chaînes de caractère
+    Fonction qui teste si une chaîne de caractère est dans un tableau de chaînes de caractère
     IN : char elt : la chaine de caractère à tester
          char* T[] : tableau de chaines de caractères
          int n : longueur du tableau T
     OUT : 1 si l'élément est dans le tableau
           0 sinon
-    */
+
     int lelt = strlen(elt), cpt = 0;
     for(int i=0; i<n; i++){
         cpt = 0;
@@ -28,12 +28,12 @@ int InCharTab (char elt[], char* T[], int n){
     }
     return 0;
 }
-
+*/
 
 // Fonction qui prend une instruction en argument puis va le traduire en decimal
 const char *code_instruction[] = {"pop", "ipop", "push", "ipush", "push#", "jmp", "jnz", "call", "ret", "read", "write", "op", "rnd", "dup", "halt"};
 
-int instruction_to_decimal(char *instruction){
+int instruction_to_decimal(const char *instruction){
     int lg = sizeof(code_instruction) / sizeof(code_instruction[1]);
     //si la valeur de l'instruction passée en argument est exactement la meme que celle contenue dans le code_instruction alors on retourne l'indice du code en question
     if (strcmp(code_instruction[lg-1], instruction) == 0){
@@ -108,6 +108,25 @@ void complete_zero_registre(char *registre){
     strcpy(registre, temp);
 }
 
+
+//Fonction qui fait tout d'un coup
+char *instruction_to_hexa(const char *instruction) {
+    int v_deci = instruction_to_decimal(instruction);
+    if (v_deci == -1) {
+        return NULL;
+    }
+    char *hexa = decimal_to_hexa(v_deci);
+    complete_zero_instruct(hexa);
+    return hexa;
+}
+
+// Convert register value to hexadecimal
+char *registre_to_hexa(int registre) {
+    char *hexa = decimal_to_hexa(registre);
+    complete_zero_registre(hexa);
+    return hexa;
+}
+
 //Procédure de split la chaîne de caractère en 2 ou 3 tableaux : [etiquette] [instructions] [registres]
 int isEtiquette(char *etiquette){
     if (etiquette[strlen(etiquette) - 1] == ':'){
@@ -117,19 +136,9 @@ int isEtiquette(char *etiquette){
 }
 
 int main() {
-    char instruction[] = "push"; 
-    int registre = 1000;
-    int v_deci_i = instruction_to_decimal(instruction); 
-    int v_deci_r = registre;
-
-    char *hexa = decimal_to_hexa(v_deci_i); 
-    char *hexa2 = decimal_to_hexa(v_deci_r); 
-    complete_zero_instruct(hexa);
-    complete_zero_registre(hexa2);
-    printf("Decimale: %d\n Hexadecimale: %s\n\n", v_deci_r, hexa2);
-
-    printf("Test");
-
+    char instruction[] = "op"; 
+    char *hex_instruction = instruction_to_hexa(instruction);
+    printf("Instruction: %s\n Hexadecimal: %s\n", instruction, hex_instruction);
     return 0;
 }
 
