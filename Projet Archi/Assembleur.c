@@ -2,24 +2,27 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
+#define DEBUG
 
-// Lecture du fichier d'entree
-/*
+const char *code_instruction[] = {"pop", "ipop", "push", "ipush", "push#", "jmp", "jnz", "call", "ret", "read", "write", "op", "rnd", "dup", "halt"};
+
+//---------------------------------------------------Fonctions annexes-------------------------------------------------------
+
 int InCharTab (char elt[], char* T[], int n){
-    Fonction qui teste si une chaîne de caractère est dans un tableau de chaînes de caractère
+    /*Fonction qui teste si une chaîne de caractère est dans un tableau de chaînes de caractère
     IN : char elt : la chaine de caractère à tester
          char* T[] : tableau de chaines de caractères
          int n : longueur du tableau T
     OUT : 1 si l'élément est dans le tableau
           0 sinon
-
+    */
     int lelt = strlen(elt), cpt = 0;
     for(int i=0; i<n; i++){
         cpt = 0;
         if (strlen(T[i])!=lelt)
             continue;
         for(int j=0; j<lelt; j++){
-            if (elt[j]!=T[j])
+            if (elt[j]!=T[i][j])
                 cpt += 1;
         }
         if (cpt!=lelt)
@@ -28,11 +31,8 @@ int InCharTab (char elt[], char* T[], int n){
     }
     return 0;
 }
-*/
 
 // Fonction qui prend une instruction en argument puis va le traduire en decimal
-const char *code_instruction[] = {"pop", "ipop", "push", "ipush", "push#", "jmp", "jnz", "call", "ret", "read", "write", "op", "rnd", "dup", "halt"};
-
 int instruction_to_decimal(const char *instruction){
     int lg = sizeof(code_instruction) / sizeof(code_instruction[1]);
     //si la valeur de l'instruction passée en argument est exactement la meme que celle contenue dans le code_instruction alors on retourne l'indice du code en question
@@ -108,7 +108,6 @@ void complete_zero_registre(char *registre){
     strcpy(registre, temp);
 }
 
-
 //Fonction qui fait tout d'un coup
 char *instruction_to_hexa(const char *instruction) {
     int v_deci = instruction_to_decimal(instruction);
@@ -127,7 +126,8 @@ char *registre_to_hexa(int registre) {
     return hexa;
 }
 
-//Procédure de split la chaîne de caractère en 2 ou 3 tableaux : [etiquette] [instructions] [registres]
+
+//Fonction qui teste si la chaîne de caractère est une étiquette ou non
 int isEtiquette(char *etiquette){
     if (etiquette[strlen(etiquette) - 1] == ':'){
         return 1;
@@ -135,10 +135,10 @@ int isEtiquette(char *etiquette){
     return 0;
 }
 
+//-------------------------------------------Fonctions principales-----------------------------------------------------------
 int main() {
     char instruction[] = "op"; 
     char *hex_instruction = instruction_to_hexa(instruction);
     printf("Instruction: %s\n Hexadecimal: %s\n", instruction, hex_instruction);
     return 0;
 }
-
