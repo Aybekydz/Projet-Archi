@@ -4,6 +4,24 @@
 #include <ctype.h>
 #define DEBUG
 
+
+//------------------Structure afin de comprendre quel element est une instruction, une etiquette, un registre etc..----------------
+
+// Structure qui va permettre de stocker les eti et leurs adr
+typedef struct{
+    char nom[5];
+    int adresse;
+}Etiquette;
+
+
+//Structure pour stocker les instructions
+typedef struct{
+    char mot_clef[100];
+    int ligne_instruct;
+}Instruct;
+
+
+
 const char *code_instruction[] = {"pop", "ipop", "push", "ipush", "push#", "jmp", "jnz", "call", "ret", "read", "write", "op", "rnd", "dup", "halt"};
 
 //---------------------------------------------------Fonctions annexes-------------------------------------------------------
@@ -119,7 +137,7 @@ char *instruction_to_hexa(const char *instruction) {
     return hexa;
 }
 
-// Convert register value to hexadecimal
+// Converti le registre en hexa
 char *registre_to_hexa(int registre) {
     char *hexa = decimal_to_hexa(registre);
     complete_zero_registre(hexa);
@@ -135,6 +153,11 @@ int isEtiquette(char *etiquette){
     return 0;
 }
 
+//Gestion des etiquettes
+
+//Idée 1) Collecter les etiquettes 2) Générer le code machine
+
+
 //-------------------------------------------Fonctions principales-----------------------------------------------------------
 int main() {
     char instruction[] = "op"; 
@@ -142,3 +165,4 @@ int main() {
     printf("Instruction: %s\n Hexadecimal: %s\n", instruction, hex_instruction);
     return 0;
 }
+
