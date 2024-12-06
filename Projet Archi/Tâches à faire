@@ -5,9 +5,7 @@ V tableaux de référence pour codes en assembleur et code numérique (pour le c
 comme on ne connaît pas le code num dans le fichier.
 V fonction instruction -> décimal + fonction décimal -> héxa
 V fonction indice qui renvoie l'indice d'un élément du tableau
- 
-- réfléchir à la gestion des étiquettes
-- Faire une fonction qui : s'il voit un : à la fin de sa chaîne de caractère énonce que c'est une étiquette ?
+V Faire une fonction qui : s'il voit un : à la fin de sa chaîne de caractère énonce que c'est une étiquette ?
 
 Baptiste :
  - lecture fichier assembleur et stockage dans un tableau à deux dimensions
